@@ -1,4 +1,4 @@
 node_modules
-.vscode
-.git
-build
+bower_components
+/src/css
+/src/vendor

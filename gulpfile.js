@@ -1,90 +1,136 @@
-const gulp = require('gulp');
-const gulpIf = require('gulp-if');
-const browserSync = require('browser-sync').create();
-const sass = require('gulp-sass');
-const htmlmin = require('gulp-htmlmin');
-const cssmin = require('gulp-cssmin');
-const uglify = require('gulp-uglify');
-const imagemin = require('gulp-imagemin');
-const concat = require('gulp-concat');
-const jsImport = require('gulp-js-import');
-const sourcemaps = require('gulp-sourcemaps');
-const htmlPartial = require('gulp-html-partial');
-const clean = require('gulp-clean');
-const isProd = process.env.NODE_ENV === 'prod';
+"use strict";
 
-const htmlFile = [
-    'src/*.html'
-]
+// Load plugins
+const autoprefixer = require("gulp-autoprefixer");
+const browsersync = require("browser-sync").create();
+const cleanCSS = require("gulp-clean-css");
+const del = require("del");
+const gulp = require("gulp");
+const header = require("gulp-header");
+const merge = require("merge-stream");
+const plumber = require("gulp-plumber");
+const rename = require("gulp-rename");
+const sass = require("gulp-sass");
+const uglify = require("gulp-uglify");
 
-function html() {
-    return gulp.src(htmlFile)
-        .pipe(htmlPartial({
-            basePath: 'src/partials/'
-        }))
-        .pipe(gulpIf(isProd, htmlmin({
-            collapseWhitespace: true
-        })))
-        .pipe(gulp.dest('build'));
+// Load package.json for banner
+const pkg = require('./package.json');
+
+// Set the banner content
+const banner = ['/*!\n',
+  ' * Eventano - <%= pkg.title %> v<%= pkg.version %> (<%= pkg.homepage %>)\n',
+  ' * Copyright 2020-' + (new Date()).getFullYear(), ' <%= pkg.author %>\n',
+  ' * Licensed under <%= pkg.license %> (https://github.com/hardyjoysan/<%= pkg.name %>/blob/master/LICENSE)\n',
+  ' */\n',
+  '\n'
+].join('');
+
+// BrowserSync
+function browserSync(done) {
+  browsersync.init({
+    server: {
+      baseDir: "./src"
+    },
+    port: 3000
+  });
+  done();
 }
 
-function css() {
-    return gulp.src('src/sass/style.scss')
-        .pipe(gulpIf(!isProd, sourcemaps.init()))
-        .pipe(sass({
-            includePaths: ['node_modules']
-        }).on('error', sass.logError))
-        .pipe(gulpIf(!isProd, sourcemaps.write()))
-        .pipe(gulpIf(isProd, cssmin()))
-        .pipe(gulp.dest('build/css/'));
-}
-
-function js() {
-    return gulp.src('src/js/*.js')
-        .pipe(jsImport({
-            hideConsole: true
-        }))
-        .pipe(concat('all.js'))
-        .pipe(gulpIf(isProd, uglify()))
-        .pipe(gulp.dest('build/js'));
-}
-
-function img() {
-    return gulp.src('src/img/*')
-        .pipe(gulpIf(isProd, imagemin()))
-        .pipe(gulp.dest('build/img/'));
-}
-
-function serve() {
-    browserSync.init({
-        open: true,
-        server: './build'
-    });
-}
-
+// BrowserSync reload
 function browserSyncReload(done) {
-    browserSync.reload();
-    done();
+  browsersync.reload();
+  done();
 }
 
+// Clean vendor
+function clean() {
+  return del(["./src/vendor/"]);
+}
 
+// Bring third party dependencies from node_modules into vendor directory
+function modules() {
+  // Bootstrap
+  var bootstrap = gulp.src('./node_modules/bootstrap/dist/**/*')
+    .pipe(gulp.dest('./src/vendor/bootstrap'));
+  // Font Awesome CSS
+  var fontAwesomeCSS = gulp.src('./node_modules/@fortawesome/fontawesome-free/css/**/*')
+    .pipe(gulp.dest('./src/vendor/fontawesome-free/css'));
+  // Font Awesome Webfonts
+  var fontAwesomeWebfonts = gulp.src('./node_modules/@fortawesome/fontawesome-free/webfonts/**/*')
+    .pipe(gulp.dest('./src/vendor/fontawesome-free/webfonts'));
+  // jQuery Easing
+  var jqueryEasing = gulp.src('./node_modules/jquery.easing/*.js')
+    .pipe(gulp.dest('./src/vendor/jquery-easing'));
+  // jQuery
+  var jquery = gulp.src([
+      './node_modules/jquery/dist/*',
+      '!./node_modules/jquery/dist/core.js'
+    ])
+    .pipe(gulp.dest('./src/vendor/jquery'));
+
+  return merge(bootstrap, fontAwesomeCSS, fontAwesomeWebfonts, jquery, jqueryEasing);
+}
+
+// CSS task
+function css() {
+  return gulp
+    .src("./src/scss/**/*.scss")
+    .pipe(plumber())
+    .pipe(sass({
+      outputStyle: "expanded",
+      includePaths: "./node_modules",
+    }))
+    .on("error", sass.logError)
+    .pipe(autoprefixer({
+      cascade: false
+    }))
+    .pipe(header(banner, {
+      pkg: pkg
+    }))
+    .pipe(gulp.dest("./src/css"))
+    .pipe(rename({
+      suffix: ".min"
+    }))
+    .pipe(cleanCSS())
+    .pipe(gulp.dest("./src/css"))
+    .pipe(browsersync.stream());
+}
+
+// JS task
+function js() {
+  return gulp
+    .src([
+      './src/js/*.js',
+      '!./src/js/*.min.js'
+    ])
+    .pipe(uglify())
+    .pipe(header(banner, {
+      pkg: pkg
+    }))
+    .pipe(rename({
+      suffix: '.min'
+    }))
+    .pipe(gulp.dest('./src/js'))
+    .pipe(browsersync.stream());
+}
+
+// Watch files
 function watchFiles() {
-    gulp.watch('src/**/*.html', gulp.series(html, browserSyncReload));
-    gulp.watch('src/**/*.scss', gulp.series(css, browserSyncReload));
-    gulp.watch('src/**/*.js', gulp.series(js, browserSyncReload));
-    gulp.watch('src/img/**/*.*', gulp.series(img));
-
-    return;
+  gulp.watch("./src/scss/**/*", css);
+  gulp.watch(["./src/js/**/*", "!./src/js/**/*.min.js"], js);
+  gulp.watch("./src/**/*.html", browserSyncReload);
 }
 
-function del() {
-    return gulp.src('build/*', {read: false})
-        .pipe(clean());
-}
+// Define complex tasks
+const vendor = gulp.series(clean, modules);
+const build = gulp.series(vendor, gulp.parallel(css, js));
+const watch = gulp.series(build, gulp.parallel(watchFiles, browserSync));
 
+// Export tasks
 exports.css = css;
-exports.html = html;
 exports.js = js;
-exports.del = del;
-exports.serve = gulp.parallel(html, css, js, img, watchFiles, serve);
-exports.default = gulp.series(del, html, css, js, img);
+exports.clean = clean;
+exports.vendor = vendor;
+exports.build = build;
+exports.watch = watch;
+exports.default = build;

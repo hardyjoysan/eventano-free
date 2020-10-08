@@ -1,2 +1,1 @@
-
-# Eventano Landing Page Template - v1.0
+# Eventano Free Landing Page
