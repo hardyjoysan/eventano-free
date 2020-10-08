@@ -63,17 +63,16 @@
 }
 
 @mixin heading-font {
-    font-family: 'Catamaran', 'Helvetica', 'Arial', 'sans-serif';
+    font-family: 'Exo 2', sans-serif;
     font-weight: 200;
     letter-spacing: 1px;
 }
 
 @mixin body-font {
-    font-family: 'Muli', 'Helvetica', 'Arial', 'sans-serif';
+    font-family: 'Poppins', sans-serif;
 }
 
 @mixin alt-font {
-    font-family: 'Lato', 'Helvetica', 'Arial', 'sans-serif';
-    letter-spacing: 2px;
+    font-family: 'Exo 2', sans-serif;
     text-transform: uppercase;
 }
