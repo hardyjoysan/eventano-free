@@ -39,4 +39,14 @@
   // Collapse the navbar when page is scrolled
   $(window).scroll(navbarCollapse);
 
+  // Countdown
+  var newYear = new Date(); 
+  newYear = new Date(newYear.getFullYear() + 1, 1 - 1, 1); 
+  console.log(newYear);
+  $("#thecountdown").countdown(newYear, function(event) {
+    $(this).text(
+      event.strftime('%D DAYS %H:%M:%S')
+    );
+  });
+
 })(jQuery); // End of use strict

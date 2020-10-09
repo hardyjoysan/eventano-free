@@ -61,6 +61,9 @@ function modules() {
   // jQuery Easing
   var jqueryEasing = gulp.src('./node_modules/jquery.easing/*.js')
     .pipe(gulp.dest('./src/vendor/jquery-easing'));
+  // JQuery Countdown
+  var jqueryCountdown = gulp.src('./node_modules/jquery-countdown/dist/*.js')
+    .pipe(gulp.dest('./src/vendor/jquery-countdown'));
   // jQuery
   var jquery = gulp.src([
       './node_modules/jquery/dist/*',
@@ -68,7 +71,7 @@ function modules() {
     ])
     .pipe(gulp.dest('./src/vendor/jquery'));
 
-  return merge(bootstrap, fontAwesomeCSS, fontAwesomeWebfonts, jquery, jqueryEasing);
+  return merge(bootstrap, fontAwesomeCSS, fontAwesomeWebfonts, jquery, jqueryEasing, jqueryCountdown);
 }
 
 // CSS task
