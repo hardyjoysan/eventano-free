@@ -18,21 +18,43 @@ header.masthead {
 
         text-align: center;
         h1 {
-            font-size: 36px;
+            font-size: 32px;
             @include body-font;
         }
         #thecountdown{
-            font-size: 60px;
-            @include display-font;
+            display: flex;
             width: fit-content;
             margin: auto;
             border-bottom: 2px solid #cccccc1f;
-            margin-bottom: 25px;
+            margin-bottom: 15px;
+            padding-bottom: 15px;
+            .block{
+                margin: 0 15px;
+                h4{
+                    @include display-font;
+                    font-size: 80px;
+                    margin-bottom: 0;
+                    line-height: 80px;
+                }
+                span{
+                    font-size: 13px;
+                    text-transform: uppercase;
+                }
+            }
         }
         h3{
             &.location{
-                font-size: 18px;
+                font-size: 16px;
                 font-weight: 200;
+                text-transform: uppercase;
+            }
+        }
+        .btn{
+            font-size: 20px;
+            border-width: 2px;
+            &:hover{
+                background-color: #fff;
+                color: #218838;
             }
         }
     }
@@ -50,14 +72,13 @@ header.masthead {
         top: 0;
         left: 0;
         z-index: 1;
-        background: $theme-secondary;
-        background: -webkit-linear-gradient(to left, $theme-secondary, $theme-tertiary);
-        background: linear-gradient(to left, $theme-secondary, $theme-tertiary);
-        opacity: 0.8;
+        background: #000;
+        
+        opacity: 0.88;
     }
     @media (min-width: 992px) {
         height: 100vh;
-        min-height: 775px;
+        min-height: 580px;
         padding-top: 0;
         padding-bottom: 0;
         .header-content {

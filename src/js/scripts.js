@@ -42,10 +42,12 @@
   // Countdown
   var newYear = new Date(); 
   newYear = new Date(newYear.getFullYear() + 1, 1 - 1, 1); 
-  console.log(newYear);
   $("#thecountdown").countdown(newYear, function(event) {
-    $(this).text(
-      event.strftime('%D DAYS %H:%M:%S')
+    $(this).html(
+      '<div class="block"><h4>'+event.strftime('%D')+'</h4><span>Days</span></div>' + 
+      '<div class="block"><h4>'+event.strftime('%H')+'</h4><span>Hours</span></div>' + 
+      '<div class="block"><h4>'+event.strftime('%M')+'</h4><span>Minutes</span></div>' + 
+      '<div class="block"><h4>'+event.strftime('%S')+'</h4><span>Seconds</span></div>'
     );
   });
 
