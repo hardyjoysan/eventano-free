@@ -13,9 +13,8 @@
         &:focus {
             color: darken($theme-primary, 10%);
         }
-        content: "";
-        width: 150px;
-        height: 25px;
+        width: 175px;
+        height: 30px;
         background-image: url(../img/logo-white.png);
         background-size: contain;
         background-repeat: no-repeat;
@@ -27,6 +26,8 @@
         color: $gray-darker;
     }
     .navbar-nav {
+        position: relative;
+    bottom: -15px;
         > li {
             > a {
                 @include alt-font;
@@ -35,8 +36,7 @@
                 padding: 0;
                 margin-right: 20px;
                 border-bottom: 2px solid transparent;
-                padding-bottom: 12px;
-                margin-bottom: -20px;
+                padding-bottom: 20px;
                 &.active {
                     color: $theme-primary !important;
                     background-color: transparent;

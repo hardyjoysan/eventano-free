@@ -47,14 +47,17 @@ header.masthead {
                 font-size: 16px;
                 font-weight: 200;
                 text-transform: uppercase;
+                color: $theme-primary;
             }
         }
         .btn{
             font-size: 20px;
             border-width: 2px;
+            background-color: #205d03;
+            border-color: #61e322;
             &:hover{
                 background-color: #fff;
-                color: #218838;
+                color: #205d03;
             }
         }
     }
