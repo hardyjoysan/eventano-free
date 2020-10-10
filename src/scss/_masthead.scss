@@ -13,12 +13,17 @@ header.masthead {
     .header-content {
         position: relative;
         z-index: 2;
-        max-width: 720px;
+        max-width: 500px;
         margin-bottom: 100px;
 
         text-align: center;
-        h1 {
-            font-size: 32px;
+        h1{
+            font-size: 40px;
+            font-weight: 600;
+            letter-spacing: 0.1px;
+        }
+        p {
+            font-size: 24px;
             @include body-font;
         }
         #thecountdown{
@@ -52,7 +57,7 @@ header.masthead {
         }
         .btn{
             font-size: 20px;
-            border-width: 2px;
+            border-width: 3px;
             background-color: #205d03;
             border-color: #61e322;
             &:hover{
