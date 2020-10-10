@@ -64,6 +64,13 @@ function modules() {
   // JQuery Countdown
   var jqueryCountdown = gulp.src('./node_modules/jquery-countdown/dist/*.js')
     .pipe(gulp.dest('./src/vendor/jquery-countdown'));
+  // JQuery Countdown
+  var particles = gulp.src('./node_modules/particles.js/*.js')
+    .pipe(uglify())
+    .pipe(rename({
+      suffix: '.min'
+    }))
+    .pipe(gulp.dest('./src/vendor/particles'));
   // jQuery
   var jquery = gulp.src([
       './node_modules/jquery/dist/*',
@@ -71,7 +78,10 @@ function modules() {
     ])
     .pipe(gulp.dest('./src/vendor/jquery'));
 
-  return merge(bootstrap, fontAwesomeCSS, fontAwesomeWebfonts, jquery, jqueryEasing, jqueryCountdown);
+  return merge(
+    bootstrap, fontAwesomeCSS, fontAwesomeWebfonts, 
+    jquery, jqueryEasing, jqueryCountdown, particles
+  );
 }
 
 // CSS task
