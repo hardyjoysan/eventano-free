@@ -25,6 +25,8 @@ header.masthead {
         p {
             font-size: 24px;
             @include body-font;
+            font-weight: 200;
+            line-height: 34px;
         }
         #thecountdown{
             display: flex;

@@ -64,7 +64,6 @@
 
 @mixin heading-font {
     font-family: 'Exo 2', sans-serif;
-    font-weight: 200;
     letter-spacing: 1px;
 }
 
@@ -79,4 +78,11 @@
 
 @mixin display-font {
     font-family: 'Noto Serif', serif;
+}
+@mixin flexibles {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    justify-content: start;
+    align-content: start;
 }
