@@ -39,14 +39,32 @@ h6 {
 }
 
 p {
-    font-size: 18px;
+    font-size: 16px;
     line-height: 1.5;
     margin-bottom: 20px;
 }
 
+.theme_color{
+    color: $theme-primary !important;
+}
 section {
-    padding: 100px 0;
     h2 {
-        font-size: 50px;
+        font-size: 40px;
+    }
+    .sec_title{
+        margin-bottom: 30px;
+        h2{
+            font-weight: 700;
+            text-transform: uppercase;
+        }
+        .sec_hr_title{
+            display: block;
+            width: 100px;
+            height: 3px;
+            background-color: $theme-primary;
+            margin: 8px 0;
+            position: relative;
+            left: 3px;
+        }
     }
 }
