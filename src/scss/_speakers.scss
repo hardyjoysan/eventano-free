@@ -1,0 +1,21 @@
+section#speakers{
+    position: relative;
+    height: 100vh;
+    min-height: 460px;
+    .blocks{
+        @include flexibles;
+        .sec_title{
+            margin-top: 50px;
+            display: block;
+            width: 100%;
+            text-align: right;
+        }
+        .card{
+            .card-body{
+                .card-title{
+                    font-weight: 600;
+                }
+            }
+        }
+    }
+}
