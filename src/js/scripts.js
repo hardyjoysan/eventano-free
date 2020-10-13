@@ -105,6 +105,10 @@
       }
     },
     retina_detect: true
-  });  
+  });
+
+  $(document).ready(function(){
+    $('.owl-carousel').owlCarousel();
+  });
 
 })(jQuery); // End of use strict

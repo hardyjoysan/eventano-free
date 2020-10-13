@@ -71,6 +71,9 @@ function modules() {
       suffix: '.min'
     }))
     .pipe(gulp.dest('./src/vendor/particles'));
+  // JQuery Countdown
+  var owlcarousel = gulp.src('./node_modules/owl.carousel/dist/**/*')
+    .pipe(gulp.dest('./src/vendor/owl.carousel'));
   // jQuery
   var jquery = gulp.src([
       './node_modules/jquery/dist/*',
@@ -80,7 +83,8 @@ function modules() {
 
   return merge(
     bootstrap, fontAwesomeCSS, fontAwesomeWebfonts, 
-    jquery, jqueryEasing, jqueryCountdown, particles
+    jquery, jqueryEasing, jqueryCountdown, particles,
+    owlcarousel
   );
 }
 
