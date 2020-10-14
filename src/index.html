@@ -45,9 +45,6 @@
             <a class="nav-link js-scroll-trigger" href="#sponsors">Sponsors</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link js-scroll-trigger" href="#contact">Subscribe</a>
-          </li>
-          <li class="nav-item">
             <a class="nav-link js-scroll-trigger" href="#contact">Contact</a>
           </li>
         </ul>
@@ -156,8 +153,8 @@
 
   <!-- Spearks Section -->
   <section class="offwhite" id="speakers">
-    <div class="container  h-100">
-      <div class="row  h-100">
+    <div class="container h-100">
+      <div class="row h-100">
         <div class="blocks my-auto">
           <div class="sec_title">
             <h2>Meet Our <span class="highlight theme_color">Speakers</span></h2>
@@ -199,7 +196,7 @@
   <section id="sponsors">
     <div class="container">
       <div class="row">
-        <div class="sec_title text-center">
+        <div class="sec_title">
           <h2>Our valuable <span class="highlight theme_color">Sponsors</span></h2>
           <p>Great work can only come from great partnerships. Here are just a few of the amazing clients that allow us to come to work every day and push our boundaries.</p>
         </div>
@@ -264,10 +261,54 @@
     </div>
   </section>
 
-  
-
   <!-- Contact Form -->
-  <section id="contact"></section>
+  <section id="contact" class="offwhite">
+    <div class="container h-100">
+      <div class="row h-100">
+        <div class="contact-form my-auto">
+          <div class="col-md-6 sec_title mx-auto text-center">
+            <h2>Send Us A <span class="highlight theme_color">Message</span></h2>
+            <p>If you have any questions about the event, please contact us directly. We will respond for sure.</p>
+          </div>
+          <form action="#" method="POST" novalidate="novalidate">
+             <div class="row">
+                <div class="col-md-8 mx-auto">
+                   <div class="row">
+                      <div class="col-sm-6">
+                         <div class="form-group">
+                            <label>First Name</label>
+                            <input type="text" class="form-control" name="first_name" placeholder="First Name" required>
+                         </div>
+                      </div>
+                      <div class="col-sm-6">
+                         <div class="form-group">
+                            <label>Last Name</label>
+                            <input type="text" class="form-control" name="last_name" placeholder="Last name" required>
+                         </div>
+                      </div>
+                   </div>
+                   <div class="form-group">
+                      <label>Email ID</label>
+                      <input type="email" class="form-control" name="email" placeholder="Email Address" required>
+                   </div>
+                   <div class="form-group">
+                      <label>Phone Number</label>
+                      <input type="text" class="form-control" name="phone" placeholder="Phone Number" required>
+                   </div>
+                   <div class="form-group">
+                      <label>Your Message</label>
+                      <textarea class="form-control" name="message" rows="6" required></textarea>
+                   </div>
+                   <div class="text-center top-space">
+                      <button type="submit" class="btn btn-success btn-lg">Send Message</button>
+                   </div>
+                </div>
+             </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
 
   <!-- Master Footer -->
   <footer>
