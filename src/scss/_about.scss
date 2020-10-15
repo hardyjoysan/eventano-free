@@ -30,4 +30,25 @@ section#about {
             }
         }
     }
+    @media (max-width: 991px){
+        height: auto;
+        padding: 50px 0;
+    }
+
+    @media (max-width: 575px){
+        padding: 25px 0;
+    }
+    @media (max-width: 375px){
+        padding: 25px 0;
+        p, blockquote{
+            font-size: 14px;
+            line-height: 18px;
+        }
+        .feature_boxes{
+            .feature_box{
+                width: 100%;
+                padding: 10px 0;
+            }
+        }
+    }
 }
