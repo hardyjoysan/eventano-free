@@ -1,6 +1,6 @@
 section#contact{
     position: relative;
-    padding: 100px;
+    padding: 100px 0;
     .contact-form{
         display: block;
         width: 100%;
@@ -26,6 +26,32 @@ section#contact{
             border-width: 2px;
             background-color: #205d03;
             border-color: #61e322;
+        }
+    }
+    @media (max-width: 991px) {
+        padding: 50px 15px 15px;
+    }
+    @media (max-width: 575px) {
+        .contact-form{
+            label{
+                font-size: 12px;
+                margin-bottom: 0;
+            }
+            .form-group{
+                margin-bottom: 5px;
+            }
+            .form-control{
+                min-height: auto;
+                &::placeholder{
+                    font-size: 12px;
+                }
+            }
+            .btn{
+                padding: 5px 15px;
+                border-radius: 15px;
+                font-size: 14px;
+                line-height: 18px;
+            }
         }
     }
 }
