@@ -37,13 +37,22 @@ section#about {
 
     @media (max-width: 575px){
         padding: 25px 0;
-    }
-    @media (max-width: 375px){
-        padding: 25px 0;
         p, blockquote{
-            font-size: 14px;
+            font-size: 12px;
             line-height: 18px;
+            margin-bottom: 8px;
         }
+        .feature_boxes{
+            .feature_box{
+                .content{
+                    h5{
+                        font-size: 14px;
+                    }
+                }
+            }
+        }
+    }
+    @media (max-width: 375px){       
         .feature_boxes{
             .feature_box{
                 width: 100%;
