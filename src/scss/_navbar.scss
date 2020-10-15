@@ -100,6 +100,11 @@
                 color: $theme-primary;
             }
         }
+        @media (max-width: 991px){
+            .navbar-toggler{
+                color: $gray-darker;
+            }
+        }
     }
 
     @media (max-width: 992px) {
