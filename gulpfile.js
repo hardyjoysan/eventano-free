@@ -75,7 +75,7 @@ function modules() {
   var owlcarousel = gulp.src('./node_modules/owl.carousel/dist/**/*')
     .pipe(gulp.dest('./src/vendor/owl.carousel'));
   // AOS Animations
-  var owlcarousel = gulp.src('./node_modules/aos/dist/*')
+  var aos = gulp.src('./node_modules/aos/dist/*')
     .pipe(gulp.dest('./src/vendor/aos'));
   // jQuery
   var jquery = gulp.src([
@@ -87,7 +87,7 @@ function modules() {
   return merge(
     bootstrap, fontAwesomeCSS, fontAwesomeWebfonts, 
     jquery, jqueryEasing, jqueryCountdown, particles,
-    owlcarousel
+    owlcarousel, aos
   );
 }
 
