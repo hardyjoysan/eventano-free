@@ -20,6 +20,7 @@
     "author": "Hardy Joyson",
     "dependencies": {
         "@fortawesome/fontawesome-free": "5.13.1",
+        "aos": "^2.3.4",
         "bootstrap": "4.5.0",
         "jquery": "3.5.1",
         "jquery-countdown": "^2.2.0",

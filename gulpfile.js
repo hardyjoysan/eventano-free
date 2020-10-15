@@ -74,6 +74,9 @@ function modules() {
   // JQuery Countdown
   var owlcarousel = gulp.src('./node_modules/owl.carousel/dist/**/*')
     .pipe(gulp.dest('./src/vendor/owl.carousel'));
+  // AOS Animations
+  var owlcarousel = gulp.src('./node_modules/aos/dist/*')
+    .pipe(gulp.dest('./src/vendor/aos'));
   // jQuery
   var jquery = gulp.src([
       './node_modules/jquery/dist/*',
