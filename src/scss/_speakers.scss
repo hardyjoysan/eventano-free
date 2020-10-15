@@ -18,4 +18,37 @@ section#speakers{
             }
         }
     }
+    @media (max-width: 991px) {
+        height: auto;
+        min-height: auto;
+        padding: 55px 0 10px;
+        .blocks{
+            .sec_title{
+                margin-top: 0px;
+                text-align: center;
+            }
+            .card{
+                min-height: 500px;
+                margin-bottom: 15px;
+            }
+        }
+    }
+    @media (max-width: 575px) {
+        .blocks{
+            .card{
+                min-height: auto;
+                .card-body{
+                    padding: 10px;
+                    .card-title{
+                        font-size: 18px;
+                        margin-bottom: 5px;
+                    }
+                    .card-text{
+                        font-size: 12px;
+                        line-height: 18px;
+                    }
+                }
+            }
+        }
+    }
 }
