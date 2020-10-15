@@ -99,4 +99,39 @@ header.masthead {
             max-width: 325px;
         }
     }
+    @media (max-width: 767px){
+        padding: 90px 0 40px;
+        .header-content{
+            margin-bottom: 15px;
+            h1{
+                font-size: 30px;
+            }
+            h3.location{
+                font-size: 12px;
+            }
+            #thecountdown{
+                border-width: 1px;
+                margin-bottom: 5px;
+                padding-bottom: 5px;
+                .block{
+                    h4{
+                        font-size: 40px;
+                        line-height: 40px;
+                    }
+                    span{
+                        font-size: 10px;
+                    }
+                }
+            }
+            p{
+                font-size: 12px;
+                line-height: 18px;
+                margin-bottom: 15px !important;
+            }
+            .btn{
+                font-size: 14px;
+                padding: 8px 20px;
+            }
+        }
+    }
 }
