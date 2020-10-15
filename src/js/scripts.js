@@ -109,9 +109,28 @@
 
   $(document).ready(function(){
     $('.owl-carousel').owlCarousel({
+      
       loop: true,
       autoplay: true,
       autoplayTimeout: 3000,
+      margin: 0,
+      responsive: {
+        0:{
+          items: 1,
+          dots: false,
+        },
+        420:{
+          items: 2,
+          dots: false
+        },
+        767:{
+          items: 3,
+          dots: true
+        },
+        991:{
+          items: 4,
+        }
+      }
     });
   });
 
