@@ -3,7 +3,8 @@
     padding: 15px 0;
     z-index: 999;
     border-color: fade-out($gray-darker, .95);
-    background-color: white;
+    border-color: transparent;
+    background-color: transparent;
     @include transition-all;
     @include heading-font;
     .navbar-brand {
@@ -21,13 +22,17 @@
         margin-top: 0;
     }
     .navbar-toggler {
-        font-size: 12px;
-        padding: 8px 10px;
-        color: $gray-darker;
+        font-size: 18px;
+        padding: 0px;
+        color: #fff;
+        border: 0;
+        &:focus{
+            outline: 0;
+        }
     }
     .navbar-nav {
         position: relative;
-    bottom: -15px;
+        bottom: -15px;
         > li {
             > a {
                 @include alt-font;
@@ -63,39 +68,61 @@
         left: 0;
         bottom: 0;
     }
-    @media (min-width: 992px) {
-        border-color: transparent;
-        background-color: transparent;
+    .navbar-brand {
+        color: fade(white, 70%);
+        &:hover,
+        &:focus {
+            color: white;
+        }
+    }
+    .navbar-nav > li > a,
+    .navbar-nav > li > a:focus {
+        color: fade-out(white, .3);
+        &:hover {
+            color: white;
+        }
+    }
+    &.navbar-shrink {
+        border-color: fade-out($gray-darker, .9);
+        background-color: rgba(255, 255, 255, 0.9);
         .navbar-brand {
-            color: fade(white, 70%);
+            color: $gray-darker;
+            background-image: url(../img/logo-dark.png);
             &:hover,
             &:focus {
-                color: white;
+                color: $theme-primary;
             }
         }
         .navbar-nav > li > a,
         .navbar-nav > li > a:focus {
-            color: fade-out(white, .3);
+            color: $gray-darker;
             &:hover {
-                color: white;
+                color: $theme-primary;
             }
         }
-        &.navbar-shrink {
-            border-color: fade-out($gray-darker, .9);
-            background-color: rgba(255, 255, 255, 0.9);
-            .navbar-brand {
-                color: $gray-darker;
-                background-image: url(../img/logo-dark.png);
-                &:hover,
-                &:focus {
-                    color: $theme-primary;
-                }
-            }
-            .navbar-nav > li > a,
-            .navbar-nav > li > a:focus {
-                color: $gray-darker;
-                &:hover {
-                    color: $theme-primary;
+    }
+
+    @media (max-width: 992px) {
+        .navbar-brand{
+            width: 125px;
+            height: 20px;
+        }
+    }
+    @media (max-width: 575px){
+        padding: 15px;
+        background-color: rgba(255, 255, 255, 0.8);
+        border-bottom: 0;
+        .navbar-brand{
+            background-image: url(../img/logo-dark.png);
+        }
+        .navbar-toggler {
+            color: $gray-darker;
+        }
+        .navbar-nav{
+            li{
+                a{
+                    padding-bottom: 5px;
+                    color: $gray-darker;
                 }
             }
         }
