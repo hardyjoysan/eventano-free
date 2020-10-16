@@ -2,6 +2,9 @@
     "title": "Eventano Free",
     "name": "eventano-free",
     "version": "1.0.1",
+    "engines": {
+        "node": "12.x"
+    },
     "scripts": {
         "start": "node_modules/.bin/gulp watch"
     },
